@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+	</f:facet>
+	<title>PrimeFaces Ultima</title>
+	<h:outputScript name="js/ripple.js" library="ultima-layout" />
+	<h:outputScript name="js/layout.js" library="ultima-layout" />
+</h:head>
+
+<h:body styleClass="login-body">
+	<form id="login" method="post"
+		action="#{request.contextPath}/j_spring_security_check">
+		<div class="card login-panel ui-fluid">
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<p:graphicImage name="images/logo-RC.png" library="ultima-layout" />
+				</div>
+				<p:staticMessage severity="error" summary="ERRO!"
+					detail="Usuário ou senha inválido!"
+					rendered="#{!empty param.login_error}" />
+				<div class="ui-g-12">
+					<h:panelGroup styleClass="md-inputfield">
+						<input name="j_username" type="text" placeholder="Login" 
+							class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+							role="textbox" aria-disabled="false" aria-readonly="false" />
+					</h:panelGroup>
+				</div>
+				<div class="ui-g-12">
+					<h:panelGroup styleClass="md-inputfield">
+						<input name="j_password" type="password" placeholder="Senha" 
+							class="ui-inputfield ui-password ui-widget ui-state-default ui-corner-all"
+							role="textbox" aria-disabled="false" aria-readonly="false" />
+					</h:panelGroup>
+				</div>
+				<div class="ui-g-12">
+
+					<button type="submit"
+						class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+						role="button" aria-disabled="false">
+						<span class="ui-button-icon-left ui-icon ui-c ui-icon-person"
+							/> <span class="ui-button-text ui-c">Entrar</span>
+					</button>
+
+					<p:button value="Esqueci a Senha" icon="ui-icon-help"
+						styleClass="secondary" />
+				</div>
+			</div>
+		</div>
+
+		<div class="login-footer">PrimeFaces Ultima</div>
+
+		<h:outputStylesheet name="css/ripple.css" library="ultima-layout" />
+		<h:outputStylesheet name="css/layout-#{guestPreferences.theme}.css"
+			library="ultima-layout" />
+		<script>
+			document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
+		</script>
+	</form>
+</h:body>
+
+</html>

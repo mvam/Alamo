@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true">
+
+<!-- BANCO DE TESTE -->
+	<Resource name="jdbc/alamoDB" auth="Container"
+		type="javax.sql.DataSource" maxActive="20" maxIdle="30"
+		maxWait="10000" username="postgres" password="rootleaf"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://localhost/alamo-v1-teste?autoReconnect=true" />
+
+
+<!-- BANCO DE PRODUCAO -->
+<!-- 	<Resource name="jdbc/alamoDB" auth="Container" -->
+<!-- 	type="javax.sql.DataSource" maxActive="20" maxIdle="30" maxWait="10000" -->
+<!-- 	username="postgres" password="rootleaf" -->
+<!-- 	driverClassName="org.postgresql.Driver" -->
+<!-- 	url="jdbc:postgresql://SERVIDOR-LOJA/alamo_v1?autoReconnect=true" /> -->
+</Context>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	<http auto-config="true">
+		<intercept-url pattern="/restrito/**" access="ROLE_USER" />
+		<form-login login-page="/login.jsf"
+			always-use-default-target="true" default-target-url="/restrito/home.jsf"
+			authentication-failure-url="/login.jsf?login_error=1" />
+		<logout delete-cookies="JSESSIONID"/>
+		<remember-me />
+	</http>
+	<authentication-manager>
+		<authentication-provider>
+<!-- 		isso é depois que a senha estiver criptografada -->
+<!-- 			<password-encoder hash="bcrypt"/>  -->
+ 			<jdbc-user-service data-source-ref="alamoDataSource"
+				authorities-by-username-query="SELECT u.login, p.permissao 
+																	FROM a_usuario u, a_usuario_permissao p 
+																	WHERE u.id = p.usuario AND u.login = ?"
+				users-by-username-query="SELECT login, senha, ativo FROM a_usuario WHERE login = ?" />
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>
