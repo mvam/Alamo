@@ -25,6 +25,10 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 
+/**
+ * @author Jhonis
+ *
+ */
 public class CharacterEncodingFilter implements Filter {
 
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {

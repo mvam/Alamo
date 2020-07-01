@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templatePagina.xhtml">
+
+	<ui:define name="breadCrumb">
+		<p:menuitem value="Produtos" outcome="homeProduto" />
+		<p:menuitem value="Inserir" disabled="true" />
+	</ui:define>
+
+	<ui:define name="titulo">
+		<p:outputLabel value="Inserir Produto" />
+	</ui:define>
+	<ui:define name="discricao">
+		<p:outputLabel
+			value="Inserir e importar novos registros de produtos da loja" />
+	</ui:define>
+	<p:separator />
+
+	<ui:define name="toolbar">
+		<p:menuitem value="Save" update="messages" icon="pi pi-save" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" styleClass="ui-panelgrid-blank" layout="grid">
+
+			<h:panelGroup styleClass="md-inputfield" >
+				<p:inputText id="input" />
+				<label>Tipo</label>
+			</h:panelGroup>
+
+			<h:panelGroup styleClass="md-inputfield">
+				<p:inputText id="input1" />
+				<label>N° Referencia Loja</label>
+			</h:panelGroup>
+		</p:panelGrid>
+	</ui:define>
+</ui:composition>

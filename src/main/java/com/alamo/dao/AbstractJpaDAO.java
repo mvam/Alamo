@@ -7,6 +7,12 @@ import javax.persistence.Query;
 
 import com.alamo.util.JpaUtil;
 
+/**
+ * @author Jhonis
+ *
+ * @param <T>
+ * @param <I>
+ */
 public abstract class AbstractJpaDAO<T,I> {
 	
 	public EntityManager getEntityManager() {

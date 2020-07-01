@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templatePagina.xhtml">
+
+	<ui:define name="breadCrumb">
+		<p:menuitem value="Usuario" disabled="true" />
+	</ui:define>
+
+	<ui:define name="titulo">
+		<p:outputLabel value="Usuario" />
+	</ui:define>
+
+	<ui:define name="discricao">
+		<p:outputLabel value="Cadastro e controle de usuários" />
+	</ui:define>
+	<p:separator />
+
+	<ui:define name="toolbar">
+		<p:commandButton value="Inserir"
+			action="newUsuario?faces-redirect=true" process="@this"
+			icon="ui-icon-insert-drive-file" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+	</ui:define>
+</ui:composition>

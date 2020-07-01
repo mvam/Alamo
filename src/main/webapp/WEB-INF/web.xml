@@ -48,13 +48,13 @@
 	</param-value>
 	</context-param>
 	<context-param>
-    	<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
-    	<param-value>true</param-value>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
 	</context-param>
 	<context-param>
-    	<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
-    	<param-value>true</param-value>
-  	</context-param>
+		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+		<param-value>true</param-value>
+	</context-param>
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -65,6 +65,9 @@
 	</filter-mapping>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
 	<resource-ref>
 		<description>DataSource alamoDB</description>

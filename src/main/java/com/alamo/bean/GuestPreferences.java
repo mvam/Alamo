@@ -26,7 +26,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 
-@SuppressWarnings("deprecation")
+/**
+ * @author Jhonis
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class GuestPreferences implements Serializable {
@@ -127,15 +130,15 @@ public class GuestPreferences implements Serializable {
         this.menuLayout = menuLayout;
     }
     
-    public Map getThemeColors() {
-        return this.themeColors;
+    public Map<String, String> getThemeColors() {
+    	return themeColors;
     }
     
     public void setCompact(boolean value) {
         this.compact = value;
     }
-    
-    public boolean isCompact() {
+
+	public boolean isCompact() {
         return this.compact;
     }
 

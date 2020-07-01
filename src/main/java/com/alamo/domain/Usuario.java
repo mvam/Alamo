@@ -16,6 +16,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * @author Jhonis
+ *
+ */
 @Entity
 @Table(name="a_usuario")
 public class Usuario implements Serializable{
@@ -25,33 +29,35 @@ public class Usuario implements Serializable{
 	@Id
 	@SequenceGenerator(name = "usuarioGenerator", sequenceName = "seq_usuario", allocationSize = 1, initialValue = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuarioGenerator")
-	private Integer id;
+	private long id;
 	
-	@Column(columnDefinition = "varchar(30)")
-	private String  login;
+	@Column(nullable = false, length = 30)
+	private String login;
 	
-	@Column(columnDefinition = "varchar(30)")
+	@Column(nullable = false, length = 30)
 	private String senha;
 	
 	@ElementCollection(targetClass= String.class)
 	@JoinTable(name="a_usuario_permissao",
 	uniqueConstraints={@UniqueConstraint(columnNames={"usuario", "permissao"})},
 	joinColumns=@JoinColumn(name="usuario"))
-	@Column(name="permissao", length=50)
-	private Set<String> permissao= new HashSet<String>();
+	@Column(length=50)
+	private Set<String> permissao = new HashSet<String>();
 	
-	@Column(name = "senhaerros")
+	@Column(nullable = false, columnDefinition = "integer default 0")
 	private Integer senhaErros;
 	
-	private boolean bloqueado;
+	@Column(nullable = false)
+	private boolean bloqueado = false;
 	
-	private boolean ativo;
+	@Column(nullable = false)
+	private boolean ativo = true;
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -79,6 +85,22 @@ public class Usuario implements Serializable{
 		this.permissao = permissao;
 	}
 
+	public Integer getSenhaErros() {
+		return senhaErros;
+	}
+
+	public void setSenhaErros(Integer senhaErros) {
+		this.senhaErros = senhaErros;
+	}
+
+	public boolean isBloqueado() {
+		return bloqueado;
+	}
+
+	public void setBloqueado(boolean bloqueado) {
+		this.bloqueado = bloqueado;
+	}
+
 	public boolean isAtivo() {
 		return ativo;
 	}
@@ -91,7 +113,7 @@ public class Usuario implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
 
@@ -104,13 +126,9 @@ public class Usuario implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
+		if (id != other.id)
 			return false;
 		return true;
 	}
-	
 
 }

@@ -1,8 +1,13 @@
 package com.alamo.enums;
 
+/**
+ * @author Jhonis
+ *
+ */
 public enum Permissao {
 	USUARIO(1, "ROLE_USER"),
-	ADMINISTRADOR(2, "ROLE_ADMIN");
+	ADMINISTRADOR(2, "ROLE_ADMIN"),
+	GERENTE(3, "ROLE_GERENTE");
 	
 	private int cod;
 	private String desc;

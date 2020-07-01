@@ -3,3 +3,5 @@
 /.metadata/
 .classpath
 .project
+/id_rsa
+/id_rsa.pub

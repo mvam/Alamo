@@ -5,6 +5,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+/**
+ * @author Jhonis
+ *
+ */
 public class JpaUtil {
 	private static final String PERSISTENCE_UNIT_NAME = "alamo-PU";
 

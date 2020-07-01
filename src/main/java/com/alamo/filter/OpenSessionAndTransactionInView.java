@@ -14,6 +14,10 @@ import javax.servlet.annotation.WebFilter;
 
 import com.alamo.util.JpaUtil;
 
+/**
+ * @author Jhonis
+ *
+ */
 @WebFilter(urlPatterns = "/*")
 public class OpenSessionAndTransactionInView implements Filter {
 	@Override

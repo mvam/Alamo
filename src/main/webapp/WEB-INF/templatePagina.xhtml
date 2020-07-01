@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<div class="ui-fluid">
+				<div class="ui-g">
+					<div class="ui-g-12">
+						<div class="card">
+							<p:breadCrumb>
+								<p:menuitem url="restrito/home.jsf" />
+								<ui:insert name="breadCrumb" />
+							</p:breadCrumb>
+						</div>
+						<div class="card card-w-title">
+							<h1>
+								<ui:insert name="titulo" />
+							</h1>
+							<h4>
+								<p:outputLabel value="Nesta parte do sistema é possível: "
+									style="font-weight: bold;" />
+								<ui:insert name="discricao" />
+							</h4>
+							<p:separator />
+
+							<p:toolbar>
+								<f:facet name="left">
+									<ui:insert name="toolbar" />
+								</f:facet>
+							</p:toolbar>
+						</div>
+						<div class="card">
+							<ui:insert name="conteudo" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

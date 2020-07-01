@@ -21,6 +21,9 @@
 <h:body styleClass="login-body">
 	<form id="login" method="post"
 		action="#{request.contextPath}/j_spring_security_check">
+		
+		<input type="hidden"  name="_csrf"   value="${_csrf.token}"/>
+
 		<div class="card login-panel ui-fluid">
 			<div class="ui-g">
 				<div class="ui-g-12">
@@ -57,7 +60,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<div class="login-footer">PrimeFaces Ultima</div>
 
 		<h:outputStylesheet name="css/ripple.css" library="ultima-layout" />
