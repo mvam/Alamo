@@ -21,10 +21,14 @@
 <!-- 			<password-encoder hash="bcrypt"/>  -->
  			<jdbc-user-service data-source-ref="alamoDataSource"
 				authorities-by-username-query="SELECT u.login, p.permissao 
-																	FROM a_usuario u, a_usuario_permissao p 
-																	WHERE u.id = p.usuario AND u.login = ?
-																	AND u.ativo IS TRUE"
-				users-by-username-query="SELECT login, senha, ativo FROM a_usuario WHERE login = ?" />
+													FROM a_usuario u, a_usuario_permissao p 
+													WHERE u.id = p.usuario AND u.login = ?
+													AND u.ativo IS TRUE
+													AND u.bloqueado IS FALSE"
+				users-by-username-query="SELECT login, senha, ativo, bloqueado
+											FROM a_usuario 
+											WHERE login = ?
+											AND ativo" />
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>
